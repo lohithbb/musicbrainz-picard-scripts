@@ -1,0 +1,18 @@
+# export sync
+
+
+$if($eq(%genre%,Soundtrack),
+%genre%/%album%/
+$if($gt(%totaldiscs%,1),
+$num(%discnumber%,2)-)
+$if($ne(%tracknumber%,),
+$num(%tracknumber%,3) ,)
+%title%,
+$if2(%albumartist%,%artist%)/
+$if(%album%,%album%,%title%)/
+$if($gt(%totaldiscs%,1),
+$num(%discnumber%,2)-)
+$if($ne(%tracknumber%,),
+$num(%tracknumber%,3) ,)
+%title%
+)

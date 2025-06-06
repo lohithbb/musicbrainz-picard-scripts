@@ -1,0 +1,45 @@
+# no comments, no tabs
+
+$if($eq(%genre%,Soundtrack),
+%genre%/%album%/
+$if($gt(%totaldiscs%,1),
+$num(%discnumber%,2)-)
+$if($ne(%tracknumber%,),
+$num(%tracknumber%,3) ,)
+%title%,
+$if2(%albumartist%,%artist%)/
+$if(%album%,%album%,%title%)/
+$if($gt(%totaldiscs%,1),
+$num(%discnumber%,2)-)
+$if($ne(%tracknumber%,),
+$num(%tracknumber%,3) ,)
+%title%
+)
+
+
+
+# what I had already (+comments)
+
+$if($eq(%genre%,Soundtrack),
+    # if the genre is a soundtrack (OST, film music, BGM, etc), put it in the Soundtrack folder    
+    %genre%/%album%/
+        $if($gt(%totaldiscs%,1), # if the number of discs is more than 1, prefix discnumber to the tracknumber
+            $num(%discnumber%,2)-)
+        $if($ne(%tracknumber%,), # if there is a tracknumber, add leading 0's and set it to 3 digits.
+            $num(%tracknumber%,3),)
+    %title%,
+    # if its not a soundtrack, put it in the artist's folder
+    $if2(%albumartist%,%artist%)/
+    # if there is no album, create a folder with the track name (cos cover images, etc)
+    $if(%album%,%album%,%title%)/
+    $if($gt(%totaldiscs%,1),
+        $num(%discnumber%,2)-)
+    $if($ne(%tracknumber%,),
+        $num(%tracknumber%,3) ,)
+    %title%
+)
+
+# default (what was already there)
+$if2(%albumartist%,%artist%)/
+$if(%albumartist%,%album%/,)
+$if($gt(%totaldiscs%,1),%discnumber%-,)$if($and(%albumartist%,%tracknumber%),$num(%tracknumber%,2) ,)$if(%_multiartist%,%artist% - ,)%title%

@@ -1,0 +1,61 @@
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$if($gt(%totaldiscs%,1),$num(%discnumber%,2)-)$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%,$if2(%albumartist%,%artist%)/%album%/$if($gt(%totaldiscs%,1),$num(%discnumber%,2)-)$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%)
+
+# add disc number
+
+$if($gt(%totaldiscs%,1),$num(%discnumber%,2)-)
+
+
+
+
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%,$if2(%albumartist%,%artist%)/%album%/$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%)
+
+
+
+
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$num(%tracknumber%,3) %title%,$if2(%albumartist%,%artist%)/%album%/$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%)
+
+
+%genre%/%album%
+
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$num(%tracknumber%,3) %title%,
+$if2(%albumartist%,%artist%)/%album%/$num(%tracknumber%,3) %title%
+)
+
+
+
+
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$num(%tracknumber%,3) %title%,)
+
+$if($eq(%albumartist%,Various Artists),%label%/%album%/$num(%tracknumber%,3) %title%,)
+
+
+
+)
+$if(
+	($eq(%albumartist%,Various Artists),
+	%label%/
+)
+
+$if(($eq(%albumartist%,Various Artists),
+	
+	%label%/,
+	
+)
+$if2(
+	$if(
+		$eq(%albumartist%,Various Artists),
+		),
+	,
+	%albumartist%,
+	%artist%)
+/
+$if($ne(%albumartist%,),%album%/,)
+$if($ne(%albumartist%,),$num(%tracknumber%,3) ,)%title%
+
+
+%label%/%album%/$num(%tracknumber%,3) %title%
+
+
+$if($eq(%genre%,Soundtrack),
+%genre%/%album%/$num(%tracknumber%,3) %title%,
+$if2(%albumartist%,%artist%)/%album%/$num(%tracknumber%,3) %title%)

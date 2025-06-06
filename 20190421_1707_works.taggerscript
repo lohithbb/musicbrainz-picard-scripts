@@ -1,0 +1,1 @@
+$if($eq(%genre%,Soundtrack),%genre%/%album%/$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%,$if2(%albumartist%,%artist%)/%album%/$if($ne(%tracknumber%,),$num(%tracknumber%,3) ,)%title%)# soundtrack + default
